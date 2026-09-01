@@ -14,11 +14,22 @@ const fs = require('fs');
 const DATA_FILE = './kingdom_data.json';
 
 const client = new Client({
-    authStrategy: new LocalAuth(),
+    authStrategy: new LocalAuth({
+        dataPath: './.wwebjs_auth'
+    }),
     puppeteer: {
         headless: true,
-        executablePath: 'C:\\Users\\HP PRO\\.cache\\puppeteer\\chrome\\win64-146.0.7680.31\\chrome-win64\\chrome.exe',
         args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-gpu',
+            '--disable-software-rasterizer',
+            '--no-first-run',
+            '--no-zygote'
+        ]
+    }
+});
             '--no-sandbox',
             '--disable-setuid-sandbox',
             '--disable-dev-shm-usage',
